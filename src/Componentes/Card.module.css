@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.cardsContainer {
+    display: flex;
+    gap: 120px; /* Espaço entre os cards */
+    flex-wrap: wrap; /* Permite ajuste responsivo caso não caiba na linha */
+    justify-content: center;
+    margin: 100px;
+    padding: 40px;
+}
+
+.conteiner {
+    justify-content: space-between;
+    width: 260px; /* Tamanho fixo dos cards */
+    height: 500px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: #7e7e7e;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+   
+}
+
+.conteiner img{
+    width: 100px;
+    border-radius: 100%;
+    margin-left: 75px;
+    margin-top: 190px;
+    
+}
+
+.Professor a{
+    padding-left: 92px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+   
+}
+
+
+.conteiner2 {
+    justify-content: space-between;
+    width: 260px; /* Tamanho fixo dos cards */
+    height: 500px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: #4cc5c9;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.conteiner2 img{
+    width: 100px;
+    border-radius: 100%;
+    margin-left: 75px;
+    margin-top: 190px;
+   
+}
+
+.Gestor a{
+    padding-left: 100px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+
+.conteiner3 {
+    justify-content: space-between;
+    width: 260px; /* Tamanho fixo dos cards */
+    height: 500px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: #c56b21;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.conteiner3 img{
+    width: 100px;
+    border-radius: 100%;
+    margin-left: 75px;
+    margin-top: 190px;
+   
+}
+
+.Disciplina a{
+    padding-left: 93px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.conteiner4 {
+    justify-content: space-between;
+    width: 260px; /* Tamanho fixo dos cards */
+    height: 500px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: #1fa886;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.conteiner4 img{
+    width: 100px;
+    border-radius: 100%;
+    margin-left: 75px;
+    margin-top: 190px;
+   
+}
+
+.Ambiente a{
+    padding-left: 93px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
