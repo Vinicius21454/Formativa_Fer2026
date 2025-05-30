@@ -2,48 +2,56 @@ import React, { useState } from 'react';
 import estilo from './CadastroDisciplina.module.css'; // Importando o CSS
 
 function CadastroDisciplina() {
-  const [formData, setFormData] = useState({
-    nome: '',
-    cargaHoraria: '',
-    descricao: '',
-    professorResponsavel: ''
-  });
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+require("dotenv").config();
 
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
+const app = express();
+app.use(express.json());
+app.use(cors());
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    
-    try {
-      const response = await fetch('http://localhost:8000/disciplinas/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+// Conectar ao MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log("Banco de dados conectado"))
+.catch(err => console.error("Erro ao conectar ao MongoDB:", err));
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Erro ao cadastrar disciplina');
-      }
+// Modelo de Disciplina
+const DisciplinaSchema = new mongoose.Schema({
+  nome: String,
+  cargaHoraria: Number,
+  descricao: String,
+  professorResponsavel: String,
+});
 
-      const data = await response.json();
-      alert('Disciplina cadastrada com sucesso!');
-      console.log("Dados cadastrados:", data);
-      // Limpar o formulário após o sucesso
-      setFormData({
-        nome: '',
-        cargaHoraria: '',
-        descricao: '',
-        professorResponsavel: ''
-      });
-    } catch (error) {
-      alert(`Erro: ${error.message}`);
-    }
-  };
+const Disciplina = mongoose.model("Disciplina", DisciplinaSchema);
+
+// Rota para cadastrar uma disciplina
+app.post("/disciplinas", async (req, res) => {
+  try {
+    const novaDisciplina = new Disciplina(req.body);
+    await novaDisciplina.save();
+    res.status(201).json(novaDisciplina);
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao cadastrar disciplina", error: error.message });
+  }
+});
+
+// Rota para obter todas as disciplinas
+app.get("/disciplinas", async (req, res) => {
+  try {
+    const disciplinas = await Disciplina.find();
+    res.json(disciplinas);
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao buscar disciplinas", error: error.message });
+  }
+});
+
+// Inicializar servidor
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
 
   return (
     <div className={estilo.container}>
